@@ -10,7 +10,20 @@ const categoryOrder = { Brand: 0, Wedding: 1, Portrait: 2 }
 
 function PortfolioGallery({ items, filters = portfolioFilters }) {
   const [activeFilter, setActiveFilter] = useState('All')
-  const [lightboxIndex, setLightboxIndex] = useState(null)
+  // Deep link support: /portfolio?item=<id> opens straight to that project.
+  const [lightboxIndex, setLightboxIndex] = useState(() => {
+    if (typeof window === 'undefined') return null
+
+    const deepLinkId = new URLSearchParams(window.location.search).get('item')
+    if (!deepLinkId) return null
+
+    const allSorted = [...items].sort((a, b) => {
+      if (a.category !== b.category) return categoryOrder[a.category] - categoryOrder[b.category]
+      return a.title.localeCompare(b.title)
+    })
+    const index = allSorted.findIndex((item) => item.id === deepLinkId)
+    return index === -1 ? null : index
+  })
   const [loadedImages, setLoadedImages] = useState({})
   const lastTriggerRef = useRef(null)
 
@@ -58,6 +71,17 @@ function PortfolioGallery({ items, filters = portfolioFilters }) {
       lastTriggerRef.current = null
     }
   }, [lightboxIndex])
+
+  // Keep the URL shareable/deep-linkable to whichever project is currently open.
+  useEffect(() => {
+    const url = new URL(window.location.href)
+    if (activeItem) {
+      url.searchParams.set('item', activeItem.id)
+    } else {
+      url.searchParams.delete('item')
+    }
+    window.history.replaceState({}, '', url)
+  }, [activeItem])
 
   return (
     <section aria-label="Portfolio gallery" className="py-10 sm:py-14 lg:py-16">
@@ -240,6 +264,11 @@ function Lightbox({ item, currentIndex, total, onClose, onPrevious, onNext }) {
                   Next
                 </Button>
               </div>
+              <p className="text-center text-xs text-slate-500">
+                Use <kbd className="rounded border border-white/10 px-1.5 py-0.5">←</kbd>{' '}
+                <kbd className="rounded border border-white/10 px-1.5 py-0.5">→</kbd> to browse, {' '}
+                <kbd className="rounded border border-white/10 px-1.5 py-0.5">Esc</kbd> to close
+              </p>
             </div>
           </div>
         </Card>
