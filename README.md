@@ -31,7 +31,7 @@ cp .env.example .env.local
 
 | Variable | Purpose | Default |
 | --- | --- | --- |
-| `VITE_SITE_URL` | Canonical site URL, used in SEO tags (`useSeo`), sitemap, and JSON-LD | `https://www.frameandlight.studio` |
+| `VITE_SITE_URL` | Canonical site URL, used in SEO tags (`useSeo`), sitemap, and JSON-LD | `https://photographer-portfolio-5vclv3x60-thanizh.vercel.app` (set in Vercel; also the local build-time fallback in `vite.config.js`) |
 | `VITE_EMAILJS_SERVICE_ID` / `_TEMPLATE_ID` / `_PUBLIC_KEY` | EmailJS credentials, if you wire EmailJS as the contact provider | unset |
 | `VITE_RESEND_API_KEY` | Resend API key, if you wire Resend as the contact provider | unset |
 
@@ -93,7 +93,7 @@ This is a static site after `npm run build` — the `dist/` folder can be deploy
 
 ### Any static host
 
-1. Set real values for the environment variables above (`VITE_SITE_URL` at minimum) at build time. Vite inlines env vars into the bundle *and* substitutes `%VITE_SITE_URL%` in `index.html` (canonical/OG/JSON-LD), so they must be present when you run `npm run build`, not just at runtime. If unset, `vite.config.js` falls back to the `frameandlight.studio` placeholder rather than shipping a broken literal `%VITE_SITE_URL%` string.
+1. Set real values for the environment variables above (`VITE_SITE_URL` at minimum) at build time. Vite inlines env vars into the bundle *and* substitutes `%VITE_SITE_URL%` in `index.html` (canonical/OG/JSON-LD), so they must be present when you run `npm run build`, not just at runtime. If unset, `vite.config.js` falls back to the production Vercel URL rather than shipping a broken literal `%VITE_SITE_URL%` string.
 2. Update `public/robots.txt`, `public/sitemap.xml`, and `public/llms.txt` if the production domain differs from the placeholder — these are served verbatim (Vite does not process files in `public/`), so they can't pick up the env var automatically.
 3. Because routing is client-side only, configure your host to rewrite all paths to `index.html` (SPA fallback) — e.g. Netlify's `_redirects` with `/* /index.html 200`.
 4. Run `npm run build && npm run preview` locally to smoke-test the production bundle before deploying.

@@ -6,8 +6,8 @@ Frame & Light is a photography portfolio and inquiry site. The pages below are s
 
 ## Pages
 
-- [Home](https://www.frameandlight.studio/): Overview of the studio, featured work, and services.
-- [About](https://www.frameandlight.studio/about): Studio background, approach, and lead photographer profile.
-- [Services](https://www.frameandlight.studio/services): Brand campaigns, weddings, and portrait session offerings, with the booking workflow.
-- [Portfolio](https://www.frameandlight.studio/portfolio): Selected project gallery, filterable by category, with deep links to individual projects via `?item=<id>`.
-- [Contact](https://www.frameandlight.studio/contact): Project inquiry form.
+- [Home](https://photographer-portfolio-5vclv3x60-thanizh.vercel.app/): Overview of the studio, featured work, and services.
+- [About](https://photographer-portfolio-5vclv3x60-thanizh.vercel.app/about): Studio background, approach, and lead photographer profile.
+- [Services](https://photographer-portfolio-5vclv3x60-thanizh.vercel.app/services): Brand campaigns, weddings, and portrait session offerings, with the booking workflow.
+- [Portfolio](https://photographer-portfolio-5vclv3x60-thanizh.vercel.app/portfolio): Selected project gallery, filterable by category, with deep links to individual projects via `?item=<id>`.
+- [Contact](https://photographer-portfolio-5vclv3x60-thanizh.vercel.app/contact): Project inquiry form.

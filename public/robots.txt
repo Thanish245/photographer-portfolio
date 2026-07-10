@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.frameandlight.studio/sitemap.xml
+Sitemap: https://photographer-portfolio-5vclv3x60-thanizh.vercel.app/sitemap.xml

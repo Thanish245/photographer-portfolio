@@ -1,4 +1,4 @@
-const DEFAULT_SITE_URL = 'https://www.frameandlight.studio'
+const DEFAULT_SITE_URL = 'https://photographer-portfolio-5vclv3x60-thanizh.vercel.app'
 
 export const SITE_URL = import.meta.env.VITE_SITE_URL || DEFAULT_SITE_URL
 

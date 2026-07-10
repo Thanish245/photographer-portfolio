@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.frameandlight.studio/</loc>
+    <loc>https://photographer-portfolio-5vclv3x60-thanizh.vercel.app/</loc>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://www.frameandlight.studio/about</loc>
+    <loc>https://photographer-portfolio-5vclv3x60-thanizh.vercel.app/about</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.frameandlight.studio/services</loc>
+    <loc>https://photographer-portfolio-5vclv3x60-thanizh.vercel.app/services</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.frameandlight.studio/portfolio</loc>
+    <loc>https://photographer-portfolio-5vclv3x60-thanizh.vercel.app/portfolio</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.frameandlight.studio/contact</loc>
+    <loc>https://photographer-portfolio-5vclv3x60-thanizh.vercel.app/contact</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
