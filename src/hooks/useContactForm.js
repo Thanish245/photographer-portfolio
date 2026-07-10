@@ -8,6 +8,9 @@ const initialValues = {
   email: '',
   project: '',
   details: '',
+  // Honeypot: real users never see or fill this field. Any value here means
+  // the submission almost certainly came from a bot.
+  honeypot: '',
 }
 
 function validateField(field, value) {

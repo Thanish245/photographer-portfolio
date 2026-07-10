@@ -35,6 +35,18 @@ function ContactCtaSection({ content }) {
                 </div>
               ) : (
                 <form noValidate className="space-y-5" onSubmit={handleSubmit}>
+                  <div className="absolute left-[-9999px] top-auto h-px w-px overflow-hidden" aria-hidden="true">
+                    <label htmlFor="company">Company</label>
+                    <input
+                      id="company"
+                      name="honeypot"
+                      type="text"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      value={values.honeypot}
+                      onChange={handleChange}
+                    />
+                  </div>
                   <div className="grid gap-4 sm:grid-cols-2">
                     <Input
                       id="name"
