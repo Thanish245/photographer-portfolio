@@ -4,20 +4,14 @@ import Card from '../../ui/Card'
 import Container from '../../ui/Container'
 import ImageFrame from '../../ui/ImageFrame'
 import Reveal from '../../ui/Reveal'
-import SkeletonCard from '../../ui/SkeletonCard'
 import { portfolioFilters } from '../../../data/portfolio'
 
 const categoryOrder = { Brand: 0, Wedding: 1, Portrait: 2 }
 
 function PortfolioGallery({ items, filters = portfolioFilters }) {
   const [activeFilter, setActiveFilter] = useState('All')
-  const [isHydrated, setIsHydrated] = useState(false)
   const [lightboxIndex, setLightboxIndex] = useState(null)
   const [loadedImages, setLoadedImages] = useState({})
-
-  useEffect(() => {
-    setIsHydrated(true)
-  }, [])
 
   const filteredItems = useMemo(() => {
     const matchingItems = activeFilter === 'All' ? items : items.filter((item) => item.category === activeFilter)
@@ -57,10 +51,6 @@ function PortfolioGallery({ items, filters = portfolioFilters }) {
     }
   }, [filteredItems.length, lightboxIndex])
 
-  useEffect(() => {
-    setLightboxIndex(null)
-  }, [activeFilter])
-
   return (
     <section aria-label="Portfolio gallery" className="py-10 sm:py-14 lg:py-16">
       <Container>
@@ -73,7 +63,18 @@ function PortfolioGallery({ items, filters = portfolioFilters }) {
             </div>
             <div className="flex flex-wrap gap-2">
               {filters.map((option) => (
-                <Button key={option} type="button" variant={activeFilter === option ? 'primary' : 'secondary'} size="sm" className="capitalize" aria-pressed={activeFilter === option} onClick={() => setActiveFilter(option)}>
+                <Button
+                  key={option}
+                  type="button"
+                  variant={activeFilter === option ? 'primary' : 'secondary'}
+                  size="sm"
+                  className="capitalize"
+                  aria-pressed={activeFilter === option}
+                  onClick={() => {
+                    setActiveFilter(option)
+                    setLightboxIndex(null)
+                  }}
+                >
                   {option}
                 </Button>
               ))}
@@ -81,40 +82,40 @@ function PortfolioGallery({ items, filters = portfolioFilters }) {
           </div>
         </Reveal>
 
-        <div className="mt-10 columns-1 gap-6 sm:columns-2 xl:columns-3 [column-fill:_balance]">
-          {!isHydrated
-            ? Array.from({ length: 6 }).map((_, index) => (
-                <div key={index} className="mb-6 break-inside-avoid">
-                  <SkeletonCard />
-                </div>
-              ))
-            : filteredItems.map((item, index) => (
-                <Reveal key={item.id} delay={index * 40} className="mb-6 break-inside-avoid">
-                  <Card variant="elevated" className="group overflow-hidden p-0">
-                    <ImageFrame src={item.src} alt={item.alt} label={`Open ${item.title}`} aspectClassName={item.aspectClassName} onClick={() => setLightboxIndex(index)} onLoad={() => setLoadedImages((current) => ({ ...current, [item.id]: true }))} />
-                    <div className="space-y-3 p-5">
-                      <div className="flex items-center justify-between gap-4 text-xs uppercase tracking-[0.22em] text-slate-400">
-                        <span>{item.type}</span>
-                        <span>{item.year}</span>
-                      </div>
-                      <div>
-                        <h2 className="text-lg font-semibold text-white">{item.title}</h2>
-                        <p className="mt-2 text-sm leading-6 text-slate-300">{item.summary}</p>
-                      </div>
-                      <div className="flex items-center justify-between gap-3">
-                        <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs uppercase tracking-[0.22em] text-slate-300">
-                          {item.category}
-                        </span>
-                        <span
-                          className={`h-2.5 w-2.5 rounded-full bg-sky-300 shadow-[0_0_18px_rgba(125,211,252,0.55)] transition-opacity duration-300 ${loadedImages[item.id] ? 'opacity-100' : 'opacity-40'}`}
-                          aria-hidden="true"
-                        />
-                      </div>
+        {filteredItems.length === 0 ? (
+          <p className="mt-10 rounded-3xl border border-white/10 bg-white/5 px-6 py-10 text-center text-sm text-slate-300">
+            No projects match this filter yet. Try another category.
+          </p>
+        ) : (
+          <div className="mt-10 columns-1 gap-6 sm:columns-2 xl:columns-3 [column-fill:balance]">
+            {filteredItems.map((item, index) => (
+              <Reveal key={item.id} delay={index * 40} className="mb-6 break-inside-avoid">
+                <Card variant="elevated" className="group overflow-hidden p-0">
+                  <ImageFrame src={item.src} alt={item.alt} label={`Open ${item.title}`} aspectClassName={item.aspectClassName} onClick={() => setLightboxIndex(index)} onLoad={() => setLoadedImages((current) => ({ ...current, [item.id]: true }))} />
+                  <div className="space-y-3 p-5">
+                    <div className="flex items-center justify-between gap-4 text-xs uppercase tracking-[0.22em] text-slate-400">
+                      <span>{item.type}</span>
+                      <span>{item.year}</span>
                     </div>
-                  </Card>
-                </Reveal>
-              ))}
-        </div>
+                    <div>
+                      <h2 className="text-lg font-semibold text-white">{item.title}</h2>
+                      <p className="mt-2 text-sm leading-6 text-slate-300">{item.summary}</p>
+                    </div>
+                    <div className="flex items-center justify-between gap-3">
+                      <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs uppercase tracking-[0.22em] text-slate-300">
+                        {item.category}
+                      </span>
+                      <span
+                        className={`h-2.5 w-2.5 rounded-full bg-sky-300 shadow-[0_0_18px_rgba(125,211,252,0.55)] transition-opacity duration-300 ${loadedImages[item.id] ? 'opacity-100' : 'opacity-40'}`}
+                        aria-hidden="true"
+                      />
+                    </div>
+                  </div>
+                </Card>
+              </Reveal>
+            ))}
+          </div>
+        )}
       </Container>
 
       {activeItem ? (

@@ -6,7 +6,7 @@ import Card from '../components/ui/Card'
 import Container from '../components/ui/Container'
 import Reveal from '../components/ui/Reveal'
 import useDocumentTitle from '../hooks/useDocumentTitle'
-import { aboutHighlights, aboutMeta, aboutProfile } from '../data/about'
+import { aboutHighlights, aboutMeta } from '../data/about'
 import { footerNavigation, primaryNavigation } from '../data/navigation'
 
 function AboutPage() {

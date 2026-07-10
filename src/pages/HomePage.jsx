@@ -7,11 +7,11 @@ import HomeHero from '../components/sections/home/HomeHero'
 import HomeNavigation from '../components/sections/home/HomeNavigation'
 import ServicesSection from '../components/sections/home/ServicesSection'
 import SiteFooter from '../components/sections/home/SiteFooter'
-import { aboutHighlights, aboutMeta, aboutProfile } from '../data/about'
+import { aboutProfile } from '../data/about'
 import { contactContent } from '../data/contact'
-import { footerNavigation, primaryNavigation } from '../data/navigation'
+import { footerNavigation } from '../data/navigation'
 import { heroContent } from '../data/hero'
-import { portfolioFilters, portfolioItems } from '../data/portfolio'
+import { portfolioItems } from '../data/portfolio'
 import { services as serviceItems } from '../data/services'
 import { testimonials } from '../data/testimonials'
 
@@ -30,7 +30,17 @@ function HomePage() {
       />
       <AppShell>
         <HomeHero content={heroContent} />
-        <FeaturedWorkSection />
+        <FeaturedWorkSection
+          title="A curated selection of recent commissions."
+          description="A closer look at brand, wedding, and portrait projects delivered with a consistent editorial tone."
+          items={portfolioItems.slice(0, 3).map((item) => ({
+            title: item.title,
+            category: item.category,
+            year: item.year,
+            description: item.summary,
+            image: item.src,
+          }))}
+        />
         <ServicesSection
           title="Built around calm direction and a highly polished final image."
           description="Every package is structured to keep the experience simple on set and predictable for clients, with a clear process from planning through delivery."

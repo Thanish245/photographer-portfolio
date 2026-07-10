@@ -21,7 +21,7 @@ async function submitContactForm(payload) {
   try {
     return await activeProvider(payload)
   } catch (error) {
-    throw new Error(error?.message || 'Unable to send your message right now. Please try again.')
+    throw new Error(error?.message || 'Unable to send your message right now. Please try again.', { cause: error })
   }
 }
 
