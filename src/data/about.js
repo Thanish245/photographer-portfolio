@@ -1,3 +1,5 @@
+import aboutProfileImage from '../assets/images/about-profile.jpg'
+
 export const aboutHighlights = [
   {
     title: 'Editorial direction',
@@ -27,8 +29,7 @@ export const aboutProfile = {
   title: 'Lead photographer',
   bio:
     'Maya works with design-led brands and couples who value a relaxed experience and an image set that feels considered from the first frame to the final gallery.',
-  image:
-    'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1200&q=80',
+  image: aboutProfileImage,
   alt: 'Editorial portrait of the lead photographer in warm natural light.',
   focus: 'Brand and wedding storytelling',
   approach: 'Editorial, calm, and direct',

@@ -1,3 +1,10 @@
+import atelierLight from '../assets/images/portfolio/atelier-light.jpg'
+import brandPortrait from '../assets/images/portfolio/brand-portrait.jpg'
+import ceramicNotes from '../assets/images/portfolio/ceramic-notes.jpg'
+import coastalVows from '../assets/images/portfolio/coastal-vows.jpg'
+import northlightPortrait from '../assets/images/portfolio/northlight-portrait.jpg'
+import studioCouple from '../assets/images/portfolio/studio-couple.jpg'
+
 export const portfolioItems = [
   {
     id: 'atelier-light',
@@ -6,7 +13,7 @@ export const portfolioItems = [
     type: 'Brand imagery',
     year: '2026',
     aspectClassName: 'aspect-[4/5]',
-    src: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1200&q=80',
+    src: atelierLight,
     alt: 'A minimalist interior campaign setup with soft daylight and a styled chair.',
     summary: 'A restrained product and lifestyle set for a design studio launch.',
   },
@@ -17,7 +24,7 @@ export const portfolioItems = [
     type: 'Wedding editorial',
     year: '2025',
     aspectClassName: 'aspect-[3/4]',
-    src: 'https://images.unsplash.com/photo-1529634898510-65a8f0d1f5c0?auto=format&fit=crop&w=1200&q=80',
+    src: coastalVows,
     alt: 'A couple standing together in soft coastal light during an intimate wedding portrait.',
     summary: 'An intimate ceremony on the coast with soft contrast and natural tones.',
   },
@@ -28,7 +35,7 @@ export const portfolioItems = [
     type: 'Portrait session',
     year: '2026',
     aspectClassName: 'aspect-[5/6]',
-    src: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1200&q=80',
+    src: northlightPortrait,
     alt: 'An editorial portrait with warm sunlight and a calm, confident expression.',
     summary: 'Outdoor portraits shaped around movement, texture, and late-afternoon light.',
   },
@@ -39,7 +46,7 @@ export const portfolioItems = [
     type: 'Editorial still life',
     year: '2026',
     aspectClassName: 'aspect-[4/3]',
-    src: 'https://images.unsplash.com/photo-1517705008128-361805f42e86?auto=format&fit=crop&w=1200&q=80',
+    src: ceramicNotes,
     alt: 'A neutral still life of ceramics and linen on a textured surface.',
     summary: 'Still life framing for a homewares launch with tactile materials.',
   },
@@ -50,7 +57,7 @@ export const portfolioItems = [
     type: 'Couple session',
     year: '2025',
     aspectClassName: 'aspect-[3/4]',
-    src: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80',
+    src: studioCouple,
     alt: 'A couple walking together in evening light during a pre-wedding portrait session.',
     summary: 'A quiet portrait sequence created before a city wedding ceremony.',
   },
@@ -61,7 +68,7 @@ export const portfolioItems = [
     type: 'Brand portrait',
     year: '2026',
     aspectClassName: 'aspect-[4/5]',
-    src: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80',
+    src: brandPortrait,
     alt: 'A founder portrait with a deep neutral background and confident framing.',
     summary: 'Portraits for a modern studio with a strong but understated tone.',
   },

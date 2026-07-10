@@ -1,3 +1,5 @@
+import heroSpotlight from '../assets/images/hero-spotlight.jpg'
+
 export const heroContent = {
   eyebrow: 'Available for 2026 commissions',
   title: 'Quietly cinematic photography for brands, weddings, and portraits.',
@@ -14,8 +16,7 @@ export const heroContent = {
     label: 'Featured portrait',
     description:
       'Natural light, restrained retouching, and a calm pacing style that keeps the subject feeling authentic.',
-    image:
-      'https://images.unsplash.com/photo-1529634806980-85c3dd6d34ac?auto=format&fit=crop&w=1200&q=80',
+    image: heroSpotlight,
   },
   details: [
     { label: 'Based in', value: 'London + travel' },

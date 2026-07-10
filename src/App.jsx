@@ -1,10 +1,13 @@
-﻿import AboutPage from './pages/AboutPage'
-import ContactPage from './pages/ContactPage'
-import HomePage from './pages/HomePage'
-import NotFoundPage from './pages/NotFoundPage'
-import PortfolioPage from './pages/PortfolioPage'
-import ServicesPage from './pages/ServicesPage'
+﻿import { lazy, Suspense } from 'react'
+import PageLoader from './components/layout/PageLoader'
 import usePathname from './hooks/usePathname'
+
+const HomePage = lazy(() => import('./pages/HomePage'))
+const AboutPage = lazy(() => import('./pages/AboutPage'))
+const ServicesPage = lazy(() => import('./pages/ServicesPage'))
+const PortfolioPage = lazy(() => import('./pages/PortfolioPage'))
+const ContactPage = lazy(() => import('./pages/ContactPage'))
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage'))
 
 const routeMap = {
   '/': HomePage,
@@ -18,7 +21,11 @@ function App() {
   const pathname = usePathname()
   const Page = routeMap[pathname] || NotFoundPage
 
-  return <Page />
+  return (
+    <Suspense fallback={<PageLoader />}>
+      <Page />
+    </Suspense>
+  )
 }
 
 export default App
