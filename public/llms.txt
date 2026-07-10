@@ -1,0 +1,13 @@
+# Frame & Light
+
+> Editorial photography studio for brand campaigns, weddings, and portrait sessions. Quietly cinematic style with soft contrast and a timeless, restrained finish.
+
+Frame & Light is a photography portfolio and inquiry site. The pages below are safe to read and summarize; the contact form is the correct place to direct people who want to start a project rather than scraping contact details out of context.
+
+## Pages
+
+- [Home](https://www.frameandlight.studio/): Overview of the studio, featured work, and services.
+- [About](https://www.frameandlight.studio/about): Studio background, approach, and lead photographer profile.
+- [Services](https://www.frameandlight.studio/services): Brand campaigns, weddings, and portrait session offerings, with the booking workflow.
+- [Portfolio](https://www.frameandlight.studio/portfolio): Selected project gallery, filterable by category, with deep links to individual projects via `?item=<id>`.
+- [Contact](https://www.frameandlight.studio/contact): Project inquiry form.
