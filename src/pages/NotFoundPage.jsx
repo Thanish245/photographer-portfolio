@@ -6,7 +6,11 @@ import useSeo from '../hooks/useSeo'
 import { primaryNavigation } from '../data/navigation'
 
 function NotFoundPage() {
-  useSeo({ title: 'Page not found | Frame & Light', description: 'This page could not be found.' })
+  useSeo({
+    title: 'Page not found | Frame & Light',
+    description: 'This page could not be found.',
+    noIndex: true,
+  })
 
   return (
     <>

@@ -1,13 +1,22 @@
 import { useEffect } from 'react'
-
-const SITE_URL = 'https://www.frameandlight.studio'
+import { SITE_URL } from '../config/env'
 
 function setMetaContent(selector, content) {
   const element = document.querySelector(selector)
   if (element) element.setAttribute('content', content)
 }
 
-function useSeo({ title, description, path = '/' }) {
+function setRobotsMeta(noIndex) {
+  let element = document.querySelector('meta[name="robots"]')
+  if (!element) {
+    element = document.createElement('meta')
+    element.setAttribute('name', 'robots')
+    document.head.appendChild(element)
+  }
+  element.setAttribute('content', noIndex ? 'noindex, nofollow' : 'index, follow')
+}
+
+function useSeo({ title, description, path = '/', noIndex = false }) {
   useEffect(() => {
     if (title) {
       document.title = title
@@ -25,7 +34,11 @@ function useSeo({ title, description, path = '/' }) {
     const canonicalLink = document.querySelector('link[rel="canonical"]')
     if (canonicalLink) canonicalLink.setAttribute('href', canonicalUrl)
     setMetaContent('meta[property="og:url"]', canonicalUrl)
-  }, [title, description, path])
+
+    setRobotsMeta(noIndex)
+
+    return () => setRobotsMeta(false)
+  }, [title, description, path, noIndex])
 }
 
 export default useSeo

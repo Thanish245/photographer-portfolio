@@ -1,3 +1,5 @@
+import logger from '../utils/logger'
+
 const SIMULATED_LATENCY_MS = 900
 
 // Client-side placeholder only. A real deployment must also rate-limit on the
@@ -8,7 +10,7 @@ let lastSubmittedAt = 0
 
 async function stubProvider(payload) {
   await new Promise((resolve) => setTimeout(resolve, SIMULATED_LATENCY_MS))
-  console.info('[contactService] stub provider received submission', payload)
+  logger.info('[contactService] stub provider received submission', payload)
   return { success: true }
 }
 
@@ -43,6 +45,7 @@ async function submitContactForm(payload) {
     lastSubmittedAt = now
     return result
   } catch (error) {
+    logger.error('[contactService] provider failed', error)
     throw new Error(error?.message || 'Unable to send your message right now. Please try again.', { cause: error })
   }
 }
