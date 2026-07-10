@@ -5,12 +5,17 @@ import SiteFooter from '../components/sections/home/SiteFooter'
 import ContactCtaSection from '../components/sections/home/ContactCtaSection'
 import Container from '../components/ui/Container'
 import Reveal from '../components/ui/Reveal'
-import useDocumentTitle from '../hooks/useDocumentTitle'
+import useSeo from '../hooks/useSeo'
 import { contactContent } from '../data/contact'
 import { footerNavigation, primaryNavigation } from '../data/navigation'
 
 function ContactPage() {
-  useDocumentTitle('Contact | Frame & Light')
+  useSeo({
+    title: 'Contact | Frame & Light',
+    description:
+      'Start a photography project with Frame & Light. Share the basics and get a tailored recommendation and availability.',
+    path: '/contact',
+  })
 
   return (
     <>

@@ -5,12 +5,17 @@ import SiteFooter from '../components/sections/home/SiteFooter'
 import PortfolioGallery from '../components/sections/portfolio/PortfolioGallery'
 import Container from '../components/ui/Container'
 import Reveal from '../components/ui/Reveal'
-import useDocumentTitle from '../hooks/useDocumentTitle'
+import useSeo from '../hooks/useSeo'
 import { footerNavigation, primaryNavigation } from '../data/navigation'
 import { portfolioFilters, portfolioItems } from '../data/portfolio'
 
 function PortfolioPage() {
-  useDocumentTitle('Portfolio | Frame & Light')
+  useSeo({
+    title: 'Portfolio | Frame & Light',
+    description:
+      'Selected work across brand campaigns, weddings, and portrait storytelling, with soft contrast and a clean editorial finish.',
+    path: '/portfolio',
+  })
 
   return (
     <>

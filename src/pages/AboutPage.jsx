@@ -5,12 +5,17 @@ import SiteFooter from '../components/sections/home/SiteFooter'
 import Card from '../components/ui/Card'
 import Container from '../components/ui/Container'
 import Reveal from '../components/ui/Reveal'
-import useDocumentTitle from '../hooks/useDocumentTitle'
+import useSeo from '../hooks/useSeo'
 import { aboutHighlights, aboutMeta } from '../data/about'
 import { footerNavigation, primaryNavigation } from '../data/navigation'
 
 function AboutPage() {
-  useDocumentTitle('About | Frame & Light')
+  useSeo({
+    title: 'About | Frame & Light',
+    description:
+      'Frame & Light is a studio built around careful light, clear direction, and timeless imagery for brands and couples.',
+    path: '/about',
+  })
 
   return (
     <>

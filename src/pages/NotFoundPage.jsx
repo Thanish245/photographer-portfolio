@@ -2,11 +2,11 @@
 import Card from '../components/ui/Card'
 import Container from '../components/ui/Container'
 import SiteHeader from '../components/layout/SiteHeader'
-import useDocumentTitle from '../hooks/useDocumentTitle'
+import useSeo from '../hooks/useSeo'
 import { primaryNavigation } from '../data/navigation'
 
 function NotFoundPage() {
-  useDocumentTitle('Page not found | Frame & Light')
+  useSeo({ title: 'Page not found | Frame & Light', description: 'This page could not be found.' })
 
   return (
     <>

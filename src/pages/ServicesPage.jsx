@@ -5,12 +5,17 @@ import SiteFooter from '../components/sections/home/SiteFooter'
 import ServicesSection from '../components/sections/home/ServicesSection'
 import Container from '../components/ui/Container'
 import Reveal from '../components/ui/Reveal'
-import useDocumentTitle from '../hooks/useDocumentTitle'
+import useSeo from '../hooks/useSeo'
 import { footerNavigation, primaryNavigation } from '../data/navigation'
 import { serviceWorkflow, services } from '../data/services'
 
 function ServicesPage() {
-  useDocumentTitle('Services | Frame & Light')
+  useSeo({
+    title: 'Services | Frame & Light',
+    description:
+      'Photography services for brand campaigns, weddings, and portrait sessions, shaped for clarity, ease, and premium results.',
+    path: '/services',
+  })
 
   return (
     <>

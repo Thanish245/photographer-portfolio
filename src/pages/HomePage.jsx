@@ -7,6 +7,7 @@ import HomeHero from '../components/sections/home/HomeHero'
 import HomeNavigation from '../components/sections/home/HomeNavigation'
 import ServicesSection from '../components/sections/home/ServicesSection'
 import SiteFooter from '../components/sections/home/SiteFooter'
+import useSeo from '../hooks/useSeo'
 import { aboutProfile } from '../data/about'
 import { contactContent } from '../data/contact'
 import { footerNavigation } from '../data/navigation'
@@ -16,6 +17,13 @@ import { services as serviceItems } from '../data/services'
 import { testimonials } from '../data/testimonials'
 
 function HomePage() {
+  useSeo({
+    title: 'Frame & Light | Editorial photography for brands, weddings & portraits',
+    description:
+      'Frame & Light creates quietly cinematic photography for brands, weddings, and portraits, with soft contrast and an editorial sensibility that feels timeless.',
+    path: '/',
+  })
+
   return (
     <>
       <HomeNavigation
