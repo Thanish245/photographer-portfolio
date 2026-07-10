@@ -12,7 +12,7 @@ function Card({ children, className = '', variant = 'default' }) {
     <div
       className={cn(
         baseCardClasses,
-        'transition-transform duration-300 hover:-translate-y-1',
+        'transition-transform duration-300 hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:translate-y-0',
         cardVariants[variant],
         className,
       )}

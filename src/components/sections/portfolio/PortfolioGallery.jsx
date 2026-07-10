@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import Button from '../../ui/Button'
 import Card from '../../ui/Card'
 import Container from '../../ui/Container'
@@ -12,6 +12,7 @@ function PortfolioGallery({ items, filters = portfolioFilters }) {
   const [activeFilter, setActiveFilter] = useState('All')
   const [lightboxIndex, setLightboxIndex] = useState(null)
   const [loadedImages, setLoadedImages] = useState({})
+  const lastTriggerRef = useRef(null)
 
   const filteredItems = useMemo(() => {
     const matchingItems = activeFilter === 'All' ? items : items.filter((item) => item.category === activeFilter)
@@ -50,6 +51,13 @@ function PortfolioGallery({ items, filters = portfolioFilters }) {
       window.removeEventListener('keydown', onKeyDown)
     }
   }, [filteredItems.length, lightboxIndex])
+
+  useEffect(() => {
+    if (lightboxIndex === null && lastTriggerRef.current) {
+      lastTriggerRef.current.focus()
+      lastTriggerRef.current = null
+    }
+  }, [lightboxIndex])
 
   return (
     <section aria-label="Portfolio gallery" className="py-10 sm:py-14 lg:py-16">
@@ -91,7 +99,17 @@ function PortfolioGallery({ items, filters = portfolioFilters }) {
             {filteredItems.map((item, index) => (
               <Reveal key={item.id} delay={index * 40} className="mb-6 break-inside-avoid">
                 <Card variant="elevated" className="group overflow-hidden p-0">
-                  <ImageFrame src={item.src} alt={item.alt} label={`Open ${item.title}`} aspectClassName={item.aspectClassName} onClick={() => setLightboxIndex(index)} onLoad={() => setLoadedImages((current) => ({ ...current, [item.id]: true }))} />
+                  <ImageFrame
+                    src={item.src}
+                    alt={item.alt}
+                    label={`Open ${item.title}`}
+                    aspectClassName={item.aspectClassName}
+                    onClick={(event) => {
+                      lastTriggerRef.current = event.currentTarget
+                      setLightboxIndex(index)
+                    }}
+                    onLoad={() => setLoadedImages((current) => ({ ...current, [item.id]: true }))}
+                  />
                   <div className="space-y-3 p-5">
                     <div className="flex items-center justify-between gap-4 text-xs uppercase tracking-[0.22em] text-slate-400">
                       <span>{item.type}</span>
@@ -133,6 +151,41 @@ function PortfolioGallery({ items, filters = portfolioFilters }) {
 }
 
 function Lightbox({ item, currentIndex, total, onClose, onPrevious, onNext }) {
+  const dialogRef = useRef(null)
+  const closeButtonRef = useRef(null)
+
+  useEffect(() => {
+    closeButtonRef.current?.focus()
+  }, [])
+
+  useEffect(() => {
+    const container = dialogRef.current
+    if (!container) return undefined
+
+    function trapTab(event) {
+      if (event.key !== 'Tab') return
+
+      const focusable = container.querySelectorAll(
+        'a[href], button:not([disabled]), input, textarea, select, [tabindex]:not([tabindex="-1"])',
+      )
+      if (focusable.length === 0) return
+
+      const first = focusable[0]
+      const last = focusable[focusable.length - 1]
+
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault()
+        last.focus()
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault()
+        first.focus()
+      }
+    }
+
+    container.addEventListener('keydown', trapTab)
+    return () => container.removeEventListener('keydown', trapTab)
+  }, [])
+
   return (
       <div
         role="dialog"
@@ -141,7 +194,7 @@ function Lightbox({ item, currentIndex, total, onClose, onPrevious, onNext }) {
         className="fixed inset-0 z-[60] bg-slate-950/92 px-4 py-6 backdrop-blur-2xl"
         onClick={onClose}
       >
-      <div className="mx-auto flex h-full max-w-6xl items-center" onClick={(event) => event.stopPropagation()}>
+      <div ref={dialogRef} className="mx-auto flex h-full max-w-6xl items-center" onClick={(event) => event.stopPropagation()}>
         <Card variant="elevated" className="w-full p-4 sm:p-6">
           <div className="flex items-center justify-between gap-4 pb-4">
             <div>
@@ -150,7 +203,7 @@ function Lightbox({ item, currentIndex, total, onClose, onPrevious, onNext }) {
               </p>
               <h3 className="mt-2 text-xl font-semibold text-white">{item.title}</h3>
             </div>
-            <Button type="button" variant="secondary" size="sm" onClick={onClose}>
+            <Button ref={closeButtonRef} type="button" variant="secondary" size="sm" onClick={onClose}>
               Close
             </Button>
           </div>

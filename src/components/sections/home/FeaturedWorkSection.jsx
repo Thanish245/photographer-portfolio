@@ -14,7 +14,7 @@ function FeaturedWorkSection({ title, description, items }) {
             <Reveal key={item.title} delay={80}>
               <Card variant="elevated" className="group overflow-hidden p-0">
                 <div
-                  className="min-h-[24rem] bg-cover bg-center p-5 transition-transform duration-700 group-hover:scale-[1.03] sm:min-h-[28rem]"
+                  className="min-h-[24rem] bg-cover bg-center p-5 transition-transform duration-700 group-hover:scale-[1.03] motion-reduce:transition-none motion-reduce:group-hover:scale-100 sm:min-h-[28rem]"
                   style={{ backgroundImage: `linear-gradient(180deg, rgba(7,17,31,0.05), rgba(7,17,31,0.86)), url('${item.image}')` }}
                 >
                   <div className="flex h-full flex-col justify-between">

@@ -15,7 +15,7 @@ function AboutPreviewSection({ title, description, profile }) {
           <Reveal>
             <Card variant="elevated" className="grid gap-5 p-0 md:grid-cols-[0.9fr_1.1fr]">
               <div
-                className="min-h-[26rem] rounded-[1.5rem] bg-[linear-gradient(180deg,rgba(7,17,31,0.12),rgba(7,17,31,0.8)),var(--about-image)] bg-cover bg-center transition-transform duration-700 hover:scale-[1.02]"
+                className="min-h-[26rem] rounded-[1.5rem] bg-[linear-gradient(180deg,rgba(7,17,31,0.12),rgba(7,17,31,0.8)),var(--about-image)] bg-cover bg-center transition-transform duration-700 hover:scale-[1.02] motion-reduce:transition-none motion-reduce:hover:scale-100"
                 style={{ '--about-image': `url('${profile.image}')` }}
                 aria-label={profile.alt}
                 role="img"
