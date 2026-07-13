@@ -215,10 +215,10 @@ function Lightbox({ item, currentIndex, total, onClose, onPrevious, onNext }) {
         role="dialog"
         aria-modal="true"
         aria-label={`${item.title} image viewer`}
-        className="fixed inset-0 z-[60] bg-slate-950/92 px-4 py-6 backdrop-blur-2xl"
+        className="fixed inset-0 z-[60] overflow-y-auto bg-slate-950/92 px-4 py-6 backdrop-blur-2xl"
         onClick={onClose}
       >
-      <div ref={dialogRef} className="mx-auto flex h-full max-w-6xl items-center" onClick={(event) => event.stopPropagation()}>
+      <div ref={dialogRef} className="mx-auto flex min-h-full max-w-6xl items-center" onClick={(event) => event.stopPropagation()}>
         <Card variant="elevated" className="w-full p-4 sm:p-6">
           <div className="flex items-center justify-between gap-4 pb-4">
             <div>

@@ -78,7 +78,7 @@ function ContactCtaSection({ content }) {
                     id="project"
                     name="project"
                     label={content.form.project}
-                    placeholder="Brand campaign, wedding, or portrait session"
+                    placeholder="Wedding, brand, or portrait"
                     value={values.project}
                     onChange={handleChange}
                     onBlur={handleBlur}

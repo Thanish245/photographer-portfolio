@@ -11,7 +11,8 @@ function Reveal({
 }) {
   const ref = useRef(null)
   const prefersReducedMotion = usePrefersReducedMotion()
-  const [isVisible, setIsVisible] = useState(prefersReducedMotion)
+  const [isIntersected, setIsIntersected] = useState(false)
+  const isVisible = prefersReducedMotion || isIntersected
 
   useEffect(() => {
     if (prefersReducedMotion || !ref.current) return undefined
@@ -19,7 +20,7 @@ function Reveal({
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setIsVisible(true)
+          setIsIntersected(true)
           observer.disconnect()
         }
       },

@@ -29,20 +29,18 @@ function AboutPreviewSection({ title, description, profile }) {
                   <p className="text-sm leading-7 text-slate-300">{profile.bio}</p>
                 </div>
 
-                <div className="grid gap-3 border-t border-white/10 pt-5 sm:grid-cols-3">
-                  <div>
-                    <p className="text-xs uppercase tracking-[0.22em] text-slate-400">Focus</p>
-                    <p className="mt-1 text-sm text-white">{profile.focus}</p>
+                <div className="space-y-3 border-t border-white/10 pt-5">
+                  <div className="flex items-baseline justify-between gap-4">
+                    <p className="shrink-0 text-xs uppercase tracking-[0.22em] text-slate-400">Focus</p>
+                    <p className="text-right text-sm text-white">{profile.focus}</p>
                   </div>
-                  <div>
-                    <p className="text-xs uppercase tracking-[0.22em] text-slate-400">Approach</p>
-                    <p className="mt-1 text-sm text-white">{profile.approach}</p>
+                  <div className="flex items-baseline justify-between gap-4">
+                    <p className="shrink-0 text-xs uppercase tracking-[0.22em] text-slate-400">Approach</p>
+                    <p className="text-right text-sm text-white">{profile.approach}</p>
                   </div>
-                  <div>
-                    <p className="text-xs uppercase tracking-[0.22em] text-slate-400">
-                      Delivery
-                    </p>
-                    <p className="mt-1 text-sm text-white">{profile.delivery}</p>
+                  <div className="flex items-baseline justify-between gap-4">
+                    <p className="shrink-0 text-xs uppercase tracking-[0.22em] text-slate-400">Delivery</p>
+                    <p className="text-right text-sm text-white">{profile.delivery}</p>
                   </div>
                 </div>
               </div>
